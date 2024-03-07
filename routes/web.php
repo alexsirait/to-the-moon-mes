@@ -18,5 +18,5 @@ Route::get('/', [JamesController::class, 'index'])->name('index');
 Route::get('/insert', [JamesController::class, 'insert'])->name('insert');
 Route::get('/create', [JamesController::class, 'create'])->name('create');
 Route::get('/show', [JamesController::class, 'show'])->name('show');
-
+Route::get('/delete', [JamesController::class, 'delete'])->name('delete');
 

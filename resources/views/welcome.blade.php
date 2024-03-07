@@ -44,7 +44,7 @@
                                                 <td>
                                                     <a href="" title="view"><button class="btn btn-sm"><i  aria-hidden="true"></i>view</button></a>
                                                     <a href="" title="edit"><button class="btn btn-sm"><i  aria-hidden="true"></i>edit</button></a>
-                                                    <a href="" title="delete"><button class="btn btn-sm"><i  aria-hidden="true"></i>delete</button></a>
+                                                    <a href="/delete" title="delete"><button class="btn btn-sm"><i  aria-hidden="true"></i>delete</button></a>
                                                 </td>
                                             </tr>
                                         @endforeach

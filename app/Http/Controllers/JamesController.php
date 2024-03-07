@@ -20,12 +20,13 @@ class JamesController extends Controller
         return view ('create');
     }
 
-    // public function store(Request $james)
-    // {
-    //     $input = $request->all();
-    //     data::create($input);
-    //     c->with('flash_massage', 'data added');
-    // }
+    public function delete(Request $james){
+        DB::table('tbl_user')->delete([
+            "name" => $james->namamu,
+            "hp" => $james->hpmu,
+            "id" => $james->idmu,
+        ]);
+    }
     public function insert(Request $james){
         DB::table('tbl_user')->insert([
             "name" => $james->namamu,
