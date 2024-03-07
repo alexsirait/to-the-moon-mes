@@ -7,23 +7,31 @@ use Illuminate\Support\Facades\DB;
 
 class JamesController extends Controller
 {
+    public function index()
+    {
+        $data = [
+            "jamesData" => DB::table('tbl_user')->get()
+        ];
+        return view ('welcome', $data);
+    }
 
     public function create()
     {
         return view ('create');
     }
 
-    public function store(Request $james))
-    // public function insert(Request $james){
-    //     DB::table('tbl_user')->insert([
-    //         "name" => $james->namamu,
-    //         "hp" => $james->hpmu,
-    //         "id" => $james->idmu,
-    //     ]);
+    // public function store(Request $james)
+    // {
+    //     $input = $request->all();
+    //     data::create($input);
+    //     c->with('flash_massage', 'data added');
     // }
-
-    public function show(Request $james){
-        $data = DB::table('tbl_user')->get();
-        return response()->json($data);
+    public function insert(Request $james){
+        DB::table('tbl_user')->insert([
+            "name" => $james->namamu,
+            "hp" => $james->hpmu,
+            "id" => $james->idmu,
+        ]);
     }
+
 }

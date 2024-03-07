@@ -36,17 +36,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>alek</td>
-                                            <td>0808080</td>
-                                            <td>12</td>
-
-                                            <td>
-                                                <a href="" title="view"><button class="btn btn-sm"><i  aria-hidden="true"></i>view</button></a>
-                                                <a href="" title="edit"><button class="btn btn-sm"><i  aria-hidden="true"></i>edit</button></a>
-                                                <a href="" title="delete"><button class="btn btn-sm"><i  aria-hidden="true"></i>delete</button></a>
-                                            </td>
-                                        </tr>
+                                        @foreach ($jamesData as $jabes)
+                                            <tr>
+                                                <td>{{ $jabes->name }}</td>
+                                                <td>{{ $jabes->hp }}</td>
+                                                <td>{{ $jabes->id }}</td>
+                                                <td>
+                                                    <a href="" title="view"><button class="btn btn-sm"><i  aria-hidden="true"></i>view</button></a>
+                                                    <a href="" title="edit"><button class="btn btn-sm"><i  aria-hidden="true"></i>edit</button></a>
+                                                    <a href="" title="delete"><button class="btn btn-sm"><i  aria-hidden="true"></i>delete</button></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

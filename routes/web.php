@@ -14,11 +14,9 @@ use App\Http\Controllers\JamesController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [JamesController::class, 'index'])->name('index');
 Route::get('/insert', [JamesController::class, 'insert'])->name('insert');
 Route::get('/create', [JamesController::class, 'create'])->name('create');
 Route::get('/show', [JamesController::class, 'show'])->name('show');
+
 

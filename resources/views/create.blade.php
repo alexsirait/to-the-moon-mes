@@ -21,7 +21,7 @@
         <input type="submit" value="Save" class="btn btn-success"></br>
     </form> --}}
 
-       <form action="{{ route('create') }}">
+       <form action="{{ route('insert') }}">
         <input type="text" name="namamu">
         <input type="text" name="hpmu">
         <input type="text" name="idmu">
