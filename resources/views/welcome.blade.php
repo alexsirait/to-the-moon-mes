@@ -42,9 +42,9 @@
                                                 <td>{{ $jabes->hp }}</td>
                                                 <td>{{ $jabes->id }}</td>
                                                 <td>
-                                                    <a href="" title="view"><button class="btn btn-sm"><i  aria-hidden="true"></i>view</button></a>
-                                                    <a href="" title="edit"><button class="btn btn-sm"><i  aria-hidden="true"></i>edit</button></a>
-                                                    <a href="/delete" title="delete"><button class="btn btn-sm"><i  aria-hidden="true"></i>delete</button></a>
+                                                    <a href="/view/{{ $jabes->id }}" title="view"><button class="btn btn-sm"><i  aria-hidden="true"></i>view</button></a>
+                                                    <a href="/update/{{ $jabes->id }}" title="edit"><button class="btn btn-sm"><i  aria-hidden="true"></i>edit</button></a>
+                                                    <a href="/delete/{{ $jabes->id }}" title="delete"><button class="btn btn-sm"><i  aria-hidden="true"></i>delete</button></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -57,14 +57,6 @@
             </div>
         </div>
     </section>
-   {{-- <form action="{{ route('insert') }}">
-        <input type="text" name="namamu">
-        <input type="text" name="hpmu">
-        <input type="text" name="idmu">
-        <button>123</button>
-    </form>
-
-    <div class="alexxx"></div> --}}
 </body>
 <script>
     $.ajax({

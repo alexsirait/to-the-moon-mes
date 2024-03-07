@@ -25,7 +25,7 @@
         <input type="text" name="namamu">
         <input type="text" name="hpmu">
         <input type="text" name="idmu">
-        <button>123</button>
+        <button>Submit</button>
     </form>
 
     <div class="alexxx"></div>
