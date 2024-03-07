@@ -10,7 +10,7 @@ class JamesController extends Controller
     public function index()
     {
         $data = [
-            "jamesData" => DB::table('tbl_user')->get()
+            "jamesdata" => DB::table('tbl_user')->get()
         ];
         return view ('welcome', $data);
     }
@@ -19,21 +19,25 @@ class JamesController extends Controller
     {
         return view ('create');
     }
-    public function delete(Request $james){
+        public function delete(Request $james)
+        {
         DB::table('tbl_user')->where('id', $james->id)->delete();
     }
+
     public function update($id){
         $data = [
-            'idasd' => $id
+            'dataupdate' => $id
         ];
-        return view ('Update', $data);
+        return view('Update', $data);
     }
+
     public function edit(Request $james){
         DB::table('tbl_user')->where('id', $james->id)->update([
             "name" => $james->namamu,
             "hp" => $james->hpmu,
         ]);
     }
+
     public function insert(Request $james){
         DB::table('tbl_user')->insert([
             "name" => $james->namamu,
@@ -41,12 +45,11 @@ class JamesController extends Controller
             "id" => $james->idmu,
         ]);
     }
+
     public function view($id){
         $data = [
             'viiew' => DB::table('tbl_user')->where('id', $id)->get()
         ];
-
-        return view ('views', $data);
+        return view ('view', $data);
     }
-
 }
