@@ -19,11 +19,6 @@ class JamesController extends Controller
     {
         return view ('create');
     }
-    public function view(Request $james)
-    {
-        DB::table('tbl_user')->where('id', $james->id)->get();
-        return view ('views');
-    }
     public function delete(Request $james){
         DB::table('tbl_user')->where('id', $james->id)->delete();
     }
@@ -45,6 +40,13 @@ class JamesController extends Controller
             "hp" => $james->hpmu,
             "id" => $james->idmu,
         ]);
+    }
+    public function view($id){
+        $data = [
+            'viiew' => DB::table('tbl_user')->where('id', $id)->get()
+        ];
+
+        return view ('views', $data);
     }
 
 }
