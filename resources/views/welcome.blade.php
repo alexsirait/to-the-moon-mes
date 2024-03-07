@@ -11,41 +11,56 @@
     <title>Document</title>
 </head>
 <body>
-    {{-- <section class="cointainer mt-5">
-        <div class="card">
-            <div class="card=-header">
-                user create
-            </div>
-            <div class="card-body">
-                <form action="{{ route('insert') }}" method="post">
-                    @csrf
-                    <div class="form-group">
-                        <label>Namamu</label>
-                        <input type="text" name="namamu" class="form-control">
+     <section>
+        <div class="container">
+            <div class="row" style="margin:20px;">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                        <h2>LARAVEL</h2>
+                        </div>
+                        <div class="card-body">
+                            <a href="" class="btn btn-success btn-sa" title="add new data">
+                                add new
+                            </a>
+                            <br/>
+                            <br/>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>nama</th>
+                                            <th>hp</th>
+                                            <th>id</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>alek</td>
+                                            <td>0808080</td>
+                                            <td>12</td>
+
+                                            <td>
+                                                <a href="" title="view"><button class="btn btn-sm"><i class="fa fa-eye" aria-hidden="true"></i>view</button></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>hpmu</label>
-                        <input type="text" name="hpmu" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>idmu</label>
-                        <input type="text" name="idmu" class="form-control">
-                    </div>
-                    <div>
-                         <button type="submit" class="btn btn-primary">tets</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
-    </section> --}}
-    <form action="{{ route('insert') }}">
+    </section>
+   {{-- <form action="{{ route('insert') }}">
         <input type="text" name="namamu">
         <input type="text" name="hpmu">
         <input type="text" name="idmu">
         <button>123</button>
     </form>
 
-    <div class="alexxx"></div>
+    <div class="alexxx"></div> --}}
 </body>
 <script>
     $.ajax({
