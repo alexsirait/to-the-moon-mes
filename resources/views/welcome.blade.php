@@ -20,11 +20,12 @@
                         <h2>LARAVEL</h2>
                         </div>
                         <div class="card-body">
-                            <a href="" class="btn btn-success btn-sa" title="add new data">
+                            <a href="{{ url('create')}}" class="btn btn-success btn-sa" title="add new data">
                                 add new
                             </a>
                             <br/>
                             <br/>
+
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -41,7 +42,9 @@
                                             <td>12</td>
 
                                             <td>
-                                                <a href="" title="view"><button class="btn btn-sm"><i class="fa fa-eye" aria-hidden="true"></i>view</button></a>
+                                                <a href="" title="view"><button class="btn btn-sm"><i  aria-hidden="true"></i>view</button></a>
+                                                <a href="" title="edit"><button class="btn btn-sm"><i  aria-hidden="true"></i>edit</button></a>
+                                                <a href="" title="delete"><button class="btn btn-sm"><i  aria-hidden="true"></i>delete</button></a>
                                             </td>
                                         </tr>
                                     </tbody>

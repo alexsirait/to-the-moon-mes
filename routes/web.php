@@ -19,4 +19,6 @@ Route::get('/', function () {
 });
 
 Route::get('/insert', [JamesController::class, 'insert'])->name('insert');
+Route::get('/create', [JamesController::class, 'create'])->name('create');
 Route::get('/show', [JamesController::class, 'show'])->name('show');
+
