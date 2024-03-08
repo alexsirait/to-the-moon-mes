@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [OrangController::class, 'index'])->name('index');
+Route::get('/insert', [OrangController::class, 'insert'])->name('insert');
+Route::get('/create', [OrangController::class, 'create'])->name('create');
+Route::get('/show', [OrangController::class, 'show'])->name('show');
+Route::get('/delete/{id}', [OrangController::class, 'delete'])->name('delete');
+Route::get('/view/{id}', [OrangController::class, 'view'])->name('view');
+Route::get('/update/{id}', [OrangController::class, 'update'])->name('update');
+Route::get('/edit/{id}', [OrangController::class, 'edit'])->name('edit');
