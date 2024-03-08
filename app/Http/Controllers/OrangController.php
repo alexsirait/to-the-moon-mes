@@ -57,4 +57,10 @@ class OrangController extends Controller
         return view('view', $data);
     }
 
+    public function listOrang(Request $req)
+    {
+            $pm = DB::table('tbl_orang')->get();
+            return response()->json($pm);
+    }
+
 }

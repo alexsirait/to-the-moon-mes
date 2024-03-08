@@ -22,3 +22,4 @@ Route::get('/delete/{id}', [OrangController::class, 'delete'])->name('delete');
 Route::get('/view/{id}', [OrangController::class, 'view'])->name('view');
 Route::get('/update/{id}', [OrangController::class, 'update'])->name('update');
 Route::get('/edit/{id}', [OrangController::class, 'edit'])->name('edit');
+Route::get('/listOrang', [OrangController::class, 'listOrang'])->name('listOrang');

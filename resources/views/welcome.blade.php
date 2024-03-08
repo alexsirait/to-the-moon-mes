@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
 </head>
 <style>
     /* Table */
@@ -55,7 +54,8 @@
     <div>
         <a href="{{ url('create')}}" class="btn btn-sm">tambah</a>
     </div>
-    <table class="table">
+    <select class="form-select rounded-3" id="filterOrang" style="width: 250px;"></select>
+    <table class="table" id="tabel">
         <thead>
             <tr>
                 <th>id</th>
@@ -78,5 +78,28 @@
             </TBody>
         </thead>
     </table>
+
 </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: '{{ route('listOrang') }}',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    let select = $('#filterOrang');
+                    select.empty();
+                    select.append('<option value="" selected>Select Orang</option>');
+                    $.each(data, function(key, value) {
+                        select.append('<option value="' + value.name + '">' + value.name + '</option>');
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    </script>
 </html>
