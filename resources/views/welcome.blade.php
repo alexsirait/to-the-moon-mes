@@ -70,8 +70,8 @@
                         <td>{{ $orang->lokasi }}</td>
                         <td>
                             <a href="/view/{{ $orang->id }}" title="view"><button class="btn btn-sm"><i  aria-hidden="true"></i>view</button></a>
-                            <a href="/update/{{ $orang->id }}" title="edit"><button class="btn btn-sm"><i  aria-hidden="true"></i>edit</button></a>
-                            <a href="/delete/{{ $orang->id }}" title="delete"><button class="btn btn-sm"><i  aria-hidden="true"></i>delete</button></a>
+                            <a href="/update/{{ $orang->id }}" title="edit"><button class="btn btn-sm" ><i  aria-hidden="true"></i>edit</button></a>
+                            <a title="delete"> <button class="btn btn-sm" id="deletebtn" data-id="{{ $orang->id }}">  <i  aria-hidden="true"></i>delete</button></a>
                         </td>
                     </tr>
                 @endforeach
@@ -84,6 +84,7 @@
 
     <script>
         $(document).ready(function () {
+
             $.ajax({
                 url: '{{ route('listOrang') }}',
                 type: 'GET',
@@ -101,5 +102,25 @@
                 }
             });
         });
+
+        $(document).ready(function () {
+            $(document).on('click', '#deletebtn', function (e) {
+                var id = $(this).data('id');
+
+                    $.ajax({
+                        type: "GET",
+                        url: "{{ route('delete') }}",
+                        data: {id},
+                        dataType: "json",
+                        success: function (RES) {
+                            alert('seeep');
+                            window.location.reload()
+                        }
+                    });
+
+                })
+        });
+
+
     </script>
 </html>

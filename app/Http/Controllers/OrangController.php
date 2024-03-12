@@ -20,10 +20,10 @@ class OrangController extends Controller
         return view('create');
     }
 
-    public function delete(Request $orang)
+    public function delete(Request $req)
     {
-        DB::table('tbl_orang')->where('id', $orang->id)->delete();
-        return redirect('/');
+        DB::table('tbl_orang')->where('id', $req->id)->delete();
+        return response()->json("a");
     }
 
     public function update($id){
@@ -35,10 +35,11 @@ class OrangController extends Controller
 
     public function edit(Request $orang){
         DB::table('tbl_orang')->where('id', $orang->id)->update([
-            "name" => $orang->name,
-            "lokasi" => $orang->lokasi,
+            "name" => $orang->namamuuu,
+            "lokasi" => $orang->lokasimuuu,
         ]);
-        return redirect('/');
+
+        return response()->json("a");
     }
 
     public function insert(Request $orang){

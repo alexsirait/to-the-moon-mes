@@ -50,11 +50,32 @@
         }
     </style>
 <body>
-    <form action="/edit/{{ $dataupdate }}">
-        <input type="hidden" name="id" value="{{ $dataupdate }}">
-        <input type="text" name="name">
-        <input type="text" name="lokasi">
-        <button>submit</button>
+    <form>
+        <input type="hidden" name="id" id="idtest" value="{{ $dataupdate }}">
+        <input type="text" name="name" id="namamuuu">
+        <input type="text" name="lokasi" id="lokasimuuu">
+        <button type="button" id="updatebtn">submit</button>
     </form>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+            $(document).on('click', '#updatebtn', function (e) {
+                e.preventDefault()
+                var id = $("#idtest").val();
+                var namamuuu = $("#namamuuu").val();
+                var lokasimuuu = $("#lokasimuuu").val();
+                alert(id)
+                $.ajax({
+                        type: "GET",
+                        url: "{{ route('edit') }}",
+                        data: {id, namamuuu, lokasimuuu},
+                        dataType: "json",
+                        success: function (RES) {
+                            alert('seeep');
+                            window.location.href = "http://127.0.0.1:8000/";
+                        }
+                    });
+            })
+</script>
 </html>
