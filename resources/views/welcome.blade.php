@@ -103,21 +103,20 @@
                         <td>{{ $barang->quantity }}</td>
                         <td>
                             <a href="/view/{{ $barang->id }}" title="view"><button class="btn btn-sm"><i  aria-hidden="true"></i>view</button></a>
-                            <a href="/update/{{ $barang->id }}" title="edit"><button class="btn btn-sm" ><i  aria-hidden="true"></i>edit</button></a>
-                            <a title="delete"> <button class="btn btn-sm" id="editbtn" data-id="{{ $barang->id }}">  <i  aria-hidden="true"></i>delete</button></a>
+                            <a href="/update/{{ $barang->id }}" title="edit"><button class="btn btn-sm" id="editbtn" ><i  aria-hidden="true"></i>edit</button></a>
+                            <a title="delete"> <button class="btn btn-sm" id="delbtn" data-id="{{ $barang->id }}">  <i  aria-hidden="true"></i>delete</button></a>
                         </td>
                     </tr>
                 @endforeach
             </TBody>
         </thead>
     </table>
-
 </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script>
         $(document).ready(function () {
-            $(document).on('click', '#editbtn', function (e) {
+            $(document).on('click', '#delbtn', function (e) {
                 var id = $(this).data('id');
 
                     $.ajax({
@@ -148,6 +147,20 @@
                 }
             });
     })
+
+    $(document).ready(function () {
+
+/* When click show user */
+ $('body').on('click', '#editbtn', function () {
+   var userURL = $(this).data('id');
+   $.get(userURL, function (data) {
+       $('#ajaxModel').modal('show');
+       $('#nama').text(nama);
+       $('#quantity').text(quantity);
+   })
+});
+
+});
 
 
     </script>
