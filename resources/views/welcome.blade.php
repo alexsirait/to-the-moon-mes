@@ -81,36 +81,20 @@
     }
 </style>
 <body>
+    <div class="col-sm-12 mt-2 d-flex justify-content-between">
+        <div class="d-flex gap-3">
+            {{-- Search --}}
+            <input id="txSearch" type="text" style="width: 250px;"
+            class="form-control rounded-3" placeholder="Search">
+        </div>
+    </div>
     <form>
         <input type="text" name="id" id="idadd" placeholder="id">
         <input type="text" name="nama" id="nama" placeholder="nama">
         <input type="text" name="quantity" id="quantity" placeholder="quantity">
         <button type="button" id="createbtn">add</button>
     </form>
-    <table class="table" id="tabel">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>nama</th>
-                <th>Quantity</th>
-                <th>Action</th>
-            </tr>
-            <TBody>
-                @foreach ($databarang as $barang)
-                    <tr>
-                        <td>{{ $barang->id }}</td>
-                        <td>{{ $barang->nama }}</td>
-                        <td>{{ $barang->quantity }}</td>
-                        <td>
-                            <a href="/view/{{ $barang->id }}" title="view"><button class="btn btn-sm"><i  aria-hidden="true"></i>view</button></a>
-                            <a href="/update/{{ $barang->id }}" title="edit"><button class="btn btn-sm" id="editbtn" ><i  aria-hidden="true"></i>edit</button></a>
-                            <a title="delete"> <button class="btn btn-sm" id="delbtn" data-id="{{ $barang->id }}">  <i  aria-hidden="true"></i>delete</button></a>
-                        </td>
-                    </tr>
-                @endforeach
-            </TBody>
-        </thead>
-    </table>
+    <div id="container"></div>
 </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -118,7 +102,6 @@
         $(document).ready(function () {
             $(document).on('click', '#delbtn', function (e) {
                 var id = $(this).data('id');
-
                     $.ajax({
                         type: "GET",
                         url: "{{ route('delete') }}",
@@ -150,18 +133,54 @@
 
     $(document).ready(function () {
 
-/* When click show user */
- $('body').on('click', '#editbtn', function () {
-   var userURL = $(this).data('id');
-   $.get(userURL, function (data) {
-       $('#ajaxModel').modal('show');
-       $('#nama').text(nama);
-       $('#quantity').text(quantity);
-   })
-});
+    /* When click show user */
+    $('body').on('click', '#editbtn', function () {
+        var userURL = $(this).data('id');
+        $.get(userURL, function (data) {
+            $('#ajaxModel').modal('show');
+            $('#nama').text(nama);
+            $('#quantity').text(quantity);
+        })
+    });
 
-});
+    });
+    </script>
+    <script>
+        const loadSpin =
+        `<div class="d-flex justify-content-center align-items-center mt-5">
+            <div class="spinner-border d-flex justify-content-center align-items-center text-danger" role="status"><span class="visually-hidden">Loading...</span></div>
+        </div> `;
 
+        const show = () => {
+            const search = $('#txSearch').val();
+            $.ajax({
+                url: `{{ route("show") }}`,
+                method: 'GET',
+                data: {search},
+                beforeSend:function(){
+                    $('#container').html(loadSpin)
+                }
+            }).done(res => {
+                $('#container').html(res)
+                $('#table').DataTable({
+                    "ordering": true,
+                    "bSort": true,
+                    "aaSorting": [],
+                    pageLength: 10,
+                    "lengthChange": false,
+                    responsive: true,
+                    language: { search: "" },
+                });
+            })
+        }
 
+        show();
+        let delayTimer;
+        $('#txSearch').keyup(function(e){
+            clearTimeout(delayTimer);
+            delayTimer = setTimeout(function() {
+                show();
+            }, 500);
+        });
     </script>
 </html>
