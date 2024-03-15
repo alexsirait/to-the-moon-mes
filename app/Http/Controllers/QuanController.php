@@ -25,7 +25,7 @@ class QuanController extends Controller
 
     public function update($id){
         $data = [
-            'dataupdate' => $id
+            'dataupdate' => DB::table('tbl_equipment')->where('id', $id)->first()
         ];
         return view('update', $data);
     }
@@ -85,7 +85,7 @@ class QuanController extends Controller
                      <td>'. $i->quantity .'</td>
                      <td>
                          <a href="/view/'.$i->id.'" title="view"><button class="btn btn-sm"><i  aria-hidden="true"></i>view</button></a>
-                         <a href="/update/'.$i->id.'" title="edit"><button class="btn btn-sm" id="editbtn" ><i  aria-hidden="true"></i>edit</button></a>
+                         <a title="edit"><button class="btn btn-sm" id="editbton" data-id="'. $i->id .'"><i  aria-hidden="true"></i>edit</button></a>
                          <a title="delete"> <button class="btn btn-sm" id="delbtn" data-id="'. $i->id .'">  <i  aria-hidden="true"></i>delete</button></a>
                      </td>
                  </tr>

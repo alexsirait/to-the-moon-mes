@@ -50,30 +50,8 @@
         }
     </style>
 <body>
-    <form>
-        <input type="hidden" name="id" id="idtest" value="{{ $dataupdate }}">
-        <input type="text" name="nama" id="nama">
-        <input type="text" name="quantity" id="quantity">
-        <button type="button" id="editbtn">submit</button>
-    </form>
+
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
 
-            $(document).on('click', '#editbtn', function (e) {
-                e.preventDefault()
-                var id = $("#idtest").val();
-                var nama = $("#nama").val();
-                var quantity = $("#quantity").val();
-                $.ajax({
-                        type: "GET",
-                        url: "{{ route('edit') }}",
-                        data: {id, nama, quantity},
-                        dataType: "json",
-                        success: function (RES) {
-                            window.location.href = "http://127.0.0.1:8000/";
-                        }
-                    });
-            })
-</script>
 </html>

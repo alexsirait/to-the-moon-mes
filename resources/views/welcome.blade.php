@@ -95,10 +95,82 @@
         <button type="button" id="createbtn">add</button>
     </form>
     <div id="container"></div>
-</body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <div class="modal fade" id="Modaledit" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">hehe</h5>
+                </div>
+                <div class="modal-body" id="notif">
+                    <form id="editForm">
+                        <div class="row mb-2">
+                            <input type="hidden" id="idEdit">
+                            <div class="">
+                                <label for="editid" class="form-label fw-bold"></label>
+                                <input type="hidden" name="id" id="idtest" value="{{ $dataupdate->id }}">
+                            </div>
+                            <div class="">
+                                <label for="editname" class="form-label fw-bold"></label>
+                                <input type="text" name="nama" id="nama" placeholder="nama" value="{{ $dataupdate->nama }}">
+                            </div>
+                            <div class="">
+                                <label for="editquan" class="form-label fw-bold"></label>
+                                <input type="text" name="quantity" id="quantity" placeholder="quantity" value="{{ $dataupdate->quantity }}">
+                            </div>
+                            <div>
+                                <button type="button" id="editbtn">submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <script>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).on('click', '#editbtn', function (e) {
+        e.preventDefault();
+        var id = $("#idtest").val();
+        var nama = $("#nama").val();
+        var quantity = $("#quantity").val();
+        $.ajax({
+            type: "GET",
+            url: "{{ route('edit') }}",
+            data: {id, nama, quantity},
+            dataType: "json",
+            success: function (RES) {
+                window.location.href = "http://127.0.0.1:8000/";
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        // Open Modal Add Role
+        $(document).on('click', '.editbton', function (e) {
+            e.preventDefault();
+            $('#Modaledit').modal('show');
+
+            const id = $(this).data('id');
+            const name = $(this).data('name');
+            const quan = $(this).data('quan');
+
+            $("#editid").val(id);
+            $("#editname").val(name);
+            $("#editquan").val(quan);
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $("#editbton").click(function() {
+            $("#Modaledit").modal('show');
+        });
+    });
+</script>
+<script>
         $(document).ready(function () {
             $(document).on('click', '#delbtn', function (e) {
                 var id = $(this).data('id');
@@ -144,7 +216,7 @@
     });
 
     });
-    </script>
+</script>
     <script>
         const loadSpin =
         `<div class="d-flex justify-content-center align-items-center mt-5">
