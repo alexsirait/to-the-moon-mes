@@ -61,8 +61,6 @@ class QuanController extends Controller
 
         $q = "SELECT * FROM tbl_equipment WHERE id ILIKE '%$req->search%' ORDER BY id DESC";
 
-        $isPm = DB::table('tbl_equipment');
-
         $data = DB::select($q);
 
         $output .=
@@ -79,28 +77,16 @@ class QuanController extends Controller
          ';
 
          if($data){
-            foreach ($data as $i => $data){
+            foreach ($data as $i){
                 $output .= '
                  <tr>
-                     <td>'. $data->id .'</td>
-                     <td>'. $data->nama .'</td>
-                     <td>'. $data->quantity .'</td>
+                     <td>'. $i->id .'</td>
+                     <td>'. $i->nama .'</td>
+                     <td>'. $i->quantity .'</td>
                      <td>
-                         <a href="/view/'.$data->id.'" title="view"><button class="btn btn-sm"><i  aria-hidden="true"></i>view</button></a>
-                         <a href="/update/'.$data->id.'" title="edit"><button class="btn btn-sm" id="editbtn" ><i  aria-hidden="true"></i>edit</button></a>
-                         <a title="delete"> <button class="btn btn-sm" id="delbtn" data-id="'. $data->id .'">  <i  aria-hidden="true"></i>delete</button></a>
-                     </td>
-                 </tr>
-             ';
-                '
-                 <tr>
-                     <td>'. $data->id .'</td>
-                     <td>'. $data->nama .'</td>
-                     <td>'. $data->quantity .'</td>
-                     <td>
-                         <a href="/view/'.$data->id.'" title="view"><button class="btn btn-sm"><i  aria-hidden="true"></i>view</button></a>
-                         <a href="/update/'.$data->id.'" title="edit"><button class="btn btn-sm" id="editbtn" ><i  aria-hidden="true"></i>edit</button></a>
-                         <a title="delete"> <button class="btn btn-sm" id="delbtn" data-id="'. $data->id .'">  <i  aria-hidden="true"></i>delete</button></a>
+                         <a href="/view/'.$i->id.'" title="view"><button class="btn btn-sm"><i  aria-hidden="true"></i>view</button></a>
+                         <a href="/update/'.$i->id.'" title="edit"><button class="btn btn-sm" id="editbtn" ><i  aria-hidden="true"></i>edit</button></a>
+                         <a title="delete"> <button class="btn btn-sm" id="delbtn" data-id="'. $i->id .'">  <i  aria-hidden="true"></i>delete</button></a>
                      </td>
                  </tr>
              ';
